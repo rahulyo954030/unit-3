@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #typeDiv{
+        display: flex;
+        gap: 2%;
+        justify-content: center;
+        
+      }
+      #menu{
+        text-align: center;
+        margin-bottom: 2%;
+        
+        
+      }
+      #mainDiv{
+        text-align: center;
+        border: 1px solid;
+        width: 200px;
+        margin: auto;
+        height: 260px;
+        background-color: rgb(214, 195, 195);
+      }
+      #show_products{
+        background: rgb(28, 187, 13);
+        border-radius: 25px;
+        height: 25px;
+        width: 200px;
+      }
+      #submit{
+        background: rgb(179, 214, 22);
+        border-radius: 25px;
+        height: 25px;
+        width: 150px;
+        margin-top: 3%;
+      }
+      
+     
+    </style>
+  </head>
+  
+
+  <body>
+    <div id="menu">
+        <!--Create Show Products button here, give id as "show_products". avoid making spelling mistakes in HTML id's-->
+        <a href="./inventory.html"><button id="show_products">Show Products</button></a>
+    </div>
+    <div id="mainDiv">
+      <h2>Add Products</h2>
+      <!--Create a form here to accept product data from user, give form HTML id as "product_form"-->
+
+      <!--Create four inputs to accept name, price, type and image-->
+      <!--give the inputs following respective id's, "name", "price","type","image"-->
+      <!--create a submit option to submit form, give it html id as "submit"-->
+      <form id="product_form">
+        
+        <input type="text" placeholder="name" id="name"><br>
+        <input type="number" placeholder="price" id="price"><br>
+        <div id="typeDiv">
+        <h3>type</h3>
+        <select name="type" id="type" id="type"><br>
+          <option value="shoe">shoe</option><br>
+          <option value="shirt">shirt</option> <br>
+          <option value="pant">pant</option><br>        
+        </select>
+      </div><br>
+        <input type="text" placeholder="image" id="image"><br>
+          <input type="submit" id="submit"><br>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script src="./scripts/index.js"></script>
