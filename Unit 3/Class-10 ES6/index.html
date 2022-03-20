@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    class cat {
+        constructor(s,l){
+            this.species = s,
+            this.legs = l,
+            this.furs = true;
+        }
+    }
+
+    class tiger extends cat{
+        constructor(s,l){
+            super(s,l)
+            this.speed = 60;
+        }
+    }
+    class jaguar extends tiger{
+        constructor(s,l){
+            super(s,l);
+            this.name ="Shimba"
+        }
+    }
+    let t1 = new jaguar("mammel",10);
+    console.log("t1:",t1);
+
+</script>

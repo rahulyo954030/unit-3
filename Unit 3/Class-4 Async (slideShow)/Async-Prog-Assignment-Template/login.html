@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+    </head>
+    <link rel="stylesheet" href="./styles/login.css">
+
+    <body>
+
+        <div id="nav">
+            
+            <p onclick="home()">Home</p>
+            <p onclick="login()">Login</p>
+            <p onclick="signup()">Sign Up</p>
+        </div>
+
+        <div id="login-form-div">
+            <h2 class="logh2">Log In</h2>
+
+            <form id="loginForm">
+
+                <input type="text" id="Uname" name="name" placeholder="enter user name"/><br><br>
+            
+                <input type="password" id="Upass" placeholder="User password" name="password"/><br><br>
+
+                <button type="submit" id="submit" name="submit">Sign In</button>
+
+             </form>
+             <p class="or">or</p>
+             <button><a href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?redirect_uri=storagerelay%3A%2F%2Fhttps%2Fwww.bestbuy.com%3Fid%3Dauth248772&response_type=code%20permission%20id_token&scope=email%20profile%20openid&openid.realm&include_granted_scopes=true&client_id=369075948042-gku8boqssoqo5bdnkpg2s43mscgsk68i.apps.googleusercontent.com&ss_domain=https%3A%2F%2Fwww.bestbuy.com&access_type=offline&prompt=consent&origin=https%3A%2F%2Fwww.bestbuy.com&gsiwebsdk=2&flowName=GeneralOAuthFlow">Sign In with Google</a></button><br><br>
+             <button id="btn2" >Sign In with WebAuthn</button>
+        </div>
+
+        </div>
+    </body>
+
+</html>
+
+  
+<script src="./scripts/login.js"></script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    
+    function rahul(){
+        Object.defineProperty(this, "length", {
+            value: 0,
+            writable: true,
+            enumerable: false,
+        });
+
+        for(i=0; i<arguments.length; i++ ){
+            this[i]=arguments[i]
+
+        }
+        this.length = arguments.length
+    }
+
+    rahul.prototype.push=function(value){
+        let index = index.length
+        this[index] = value
+        this.length++
+    }
+
+    let fun = new Array("a","b","c")
+    fun.push("d")
+    console.log(fun)
+    
+    rahul.prototype.revese = function(){
+
+        let rev = this.rahul.reverse()
+        console.log(rev)
+
+    }
+    
+</script>

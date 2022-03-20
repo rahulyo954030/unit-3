@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #parent{
+        border: 1px solid black;
+        width: 300px;
+        margin: auto;
+        color: red;
+        box-shadow: 0px 2px 4px 2px grey;
+        justify-items: center;
+        text-align: center;
+        
+    }
+    img{
+        height: 300px;
+        width: 250px;
+        box-shadow: 0px 1px 2px 1px grey;
+    }
+</style>
+<body>
+    <div id="container">
+
+    </div>
+    
+</body>
+</html>
+<script>
+
+let url = "http://www.omdbapi.com/?i=tt3896198&apikey=524e5616";
+
+let promise = fetch(url)
+
+promise.then(function(resolve){
+
+    return resolve.json()
+    
+
+})
+.then(function(resolve){
+    let arr = []
+    arr.push(resolve)
+    console.log(arr)
+    
+     display(arr)
+})
+
+
+
+
+
+
+function display(arr){
+    // console.log(resolve)
+
+    document.querySelector("#container").innerHTML="";
+
+    arr.map(function(element){
+        let box = document.createElement("div")
+        box.setAttribute("id","parent")
+
+        let title = document.createElement("p")
+        title.innerText="Movie Name :"+" "+element.Title
+
+        let image = document.createElement("img")
+        image.setAttribute("src",element.Poster)
+
+        let year = document.createElement("p")
+        year.innerText="Year :"+" "+element.Year
+
+        let imdbRating = document.createElement("p")
+        imdbRating.innerText="IMDB Rating :"+" "+element.imdbRating
+
+        box.append(title,image,year,imdbRating)
+
+        document.querySelector("#container").append(box)
+
+    })
+
+    
+}
+
+
+</script>
+
+
+
+

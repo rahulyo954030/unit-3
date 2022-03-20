@@ -1,0 +1,121 @@
+
+        /* *{
+            font-family: Human BBY Digital,Human Fallback,Arial,Arial, Helvetica, sans-serif;
+            background-color: rgb(237, 237, 245); */
+        /* } */
+         #baap{
+       height: auto;
+       
+       width: 100%;
+       justify-content: center;
+       background-color: white
+       /* border: 1px solid; */
+       
+       
+  }
+  
+  
+ 
+  #signup-form-div{
+      height: 540px;
+      width: 400px;
+      margin: auto;
+      background-color: white;
+      border-radius:2px;
+      /* margin: 15px 0px 0px 25px; */
+      /* margin-left: 420px; */
+      justify-content: center;
+      box-shadow: 0px 4px 8px  grey
+      
+      
+      
+      
+  }
+  #form{
+      background-color: white;
+      padding-left: 5px;
+  }
+  input{
+      height: 44px;
+      width: 340px;
+      background-color: white;
+      font-size: 17px;
+      color: black;
+      border: 1px solid black;
+      font-weight: bold;
+      margin-left: 18px;
+      margin-top: 10px;
+      border-radius: 3px;
+  }
+  input:hover{
+      background-color: rgba(65, 177, 158, 0.37);
+      font-size: 19px;
+  }
+
+
+  #submit{
+      margin-top: 3%;
+      width: 350px;
+      background-color: rgb(59, 62, 218);
+    color: white;
+      height: 40px;
+    }
+    .account{
+        text-align: center;
+        background-color: white;
+        font-size: 28px;
+    }
+    #or{
+        text-align: center;
+        font-size: 15px;
+    }
+    p{
+        justify-content: center;
+        width: auto;
+        padding-left: 7px;
+    }
+    a{
+        color: rgb(145, 49, 49);
+        font-size: 18px;
+        text-decoration: none;
+        }
+    
+    
+    #submit{
+        height: 44px;
+        width: 342px;
+        background-color: rgb(35, 65, 233);
+        margin-left: 19px;
+        border: 0px;
+        color: white;
+        font-size: 17px;
+        border-radius: 5px;
+        }
+        #submit:hover{
+            background-color: rgb(243, 6, 6);
+            font-size: 20px;
+            
+        }
+        #other{
+            width: 340px;
+      background-color: white;
+      color: blue;
+      height: 40px;
+      margin-left: 25px;
+      border: 1px solid blue;
+      border-radius: 3px;
+        }
+       
+        #nav{
+            display: flex;
+            justify-content: right;
+            gap: 2%;
+            border: 1px solid;
+            padding-right: 2%;
+            background-color: rgb(66, 18, 18);
+            color: white;
+            box-shadow: 0px 2px 4px 2px grey;
+        }
+        
+
+    

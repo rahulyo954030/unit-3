@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="./godown/navbar.css">
+<body>
+    
+    <div id="header"></div>
+    <div id="showData"></div>
+    <div id="yo"></div>
+</body>
+</html>
+
+<script type="module">
+import navbar from "./godown/navbar.js"
+document.querySelector("#header").innerHTML= navbar()
+</script>
+
+<script>  
+let timerid;
+let  container= document.getElementById("showData")
+
+fishData=async()=>{
+   
+    try{
+        let input = document.querySelector("#searchBar").value
+        console.log(input)      
+        let res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata&s=${input}`)
+        let data = await res.json();
+        // console.log(data)
+       display(data.meals)
+    
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+    display=(data)=>{
+      
+        container.innerHTML=null
+
+        data.map(function(element){
+            if(data===undefined){
+                return false
+            }
+            let divForAll =document.createElement("div")
+            divForAll.setAttribute("id","divForAll")
+            divForAll.addEventListener("click",function(){
+                searchResult(element)
+            })
+            let name = document.createElement("p")
+            name.innerHTML= element.strMeal
+
+            let foodImg = document.createElement("img")
+            foodImg.setAttribute("src",element.strMealThumb)
+
+            divForAll.append(foodImg,name)
+
+           container.append(divForAll)
+        })    
+    }
+    searchResult=(element)=>{
+       let searchArr = [];
+       searchArr.push(element)
+       console.log(searchArr)
+       display1(searchArr)
+    }
+
+    display1=(searchArr)=>{
+        document.querySelector("#yo").innerHTML=""
+
+        searchArr.map(function(element){
+
+            let div2 = document.createElement("div")
+            div2.setAttribute("id","div2")
+            
+            let name1 = document.createElement("h2")
+            name1.innerHTML= "Dish Name:"+" "+element.strMeal
+
+            let foodImg1 = document.createElement("img")
+            foodImg1.setAttribute("src",element.strMealThumb)
+
+            let cate = document.createElement("p")
+            cate.innerHTML= "Category:"+" "+element.strCategory
+            
+            let area = document.createElement("p")
+            area.innerHTML= "Area:"+" "+element.strArea
+
+            div2.append(name1,foodImg1,cate,area)
+            document.querySelector("#yo").append(div2)
+        })
+    }
+
+main=async()=>{
+
+try{
+    let data= await fishData()
+    if(data===undefined){
+        return false
+    }
+    appendData(data)
+}
+    catch(error){
+        console.log("error:",error)
+}
+}
+debounce=(func,delay)=>{
+    if(timerid){
+        clearTimeout(timerid)
+    }
+    timerid= setTimeout(function(){
+        func()
+    },delay)
+}
+// *******************************************************************************************************************************
+    home=()=>{
+        window.location.href="./index.html"
+    }
+    random=()=>{
+        window.location.href="./random.html"
+    }
+    day=()=>{
+        window.location.href="./day.html"
+    }
+</script>
+

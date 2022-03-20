@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #conpopularity{
+             /* height: 500px; */
+             display: grid;
+             grid-template-columns: repeat(3,1fr);
+             /* border: 1px solid red; */
+            gap: 20px;
+          
+        }
+        #box{
+            border: 1px solid black;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0px 2px 4px 2px grey;
+            width: 75%;
+            margin: auto;
+        }
+        #trend{
+            border: 1px solid#0d264d;
+            height: 70px;
+            background-color:#0d264d;
+            
+        }
+        #tre{
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+            color: white;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="trend"><p id="tre">Trending</p></div>
+    <div id="conpopularity"></div>
+
+</body>
+</html>
+
+<script>
+
+async function getmovie(){
+    try{
+
+let res = await fetch(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=ecc9fcdc2ea17e5c996f91fb3d80acd3&`)
+
+let data = await res.json()
+console.log(data)
+
+appendData(data.results)
+}
+catch(error){
+   console.log("data:",error)
+}
+}
+getmovie()
+
+let conpopularity = document.querySelector("#conpopularity")
+function appendData(data){
+
+    data.map(function(ele){
+    let div= document.createElement("div");
+    div.setAttribute("id","box")
+
+    let img = document.createElement("img")
+    img.src = ele.poster_path
+
+    let title = document.createElement("p")
+    title.innerText = ele.title
+
+    let release  =  document.createElement("p")
+    release.innerText= ele.release_date
+
+    let rate = document.createElement("p")
+    rate.innerText= ele.vote_average
+
+        div.append(img, title, release, rate)
+
+        conpopularity.append(div)
+    })
+
+   
+
+}
+</script>

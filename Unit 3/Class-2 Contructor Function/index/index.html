@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" placeholder="Student's name" id="name">
+        <input type="number" placeholder="number" id="number">
+        <input type="text" placeholder="city" id="city">
+        <input type="submit" value="Accept" onclick="detail()">
+    </form>
+    
+</body>
+</html>
+<script>
+
+    
+    
+   
+    let stuArr= JSON.parse(localStorage.getItem("stuDetail")) || [];
+    
+    function detail(){
+        
+        
+
+        let name = document.querySelector("#name")
+        let number = document.querySelector("#number")
+        let city = document.querySelector("#city")
+    
+        function data(name,number,city){
+            this.name= name
+            this.number= number
+            this.city= city
+        
+        }
+        let x= new data(name.value,number.value,city.value)
+        
+        console.log(x)
+        stuArr.push(x)
+        console.log(stuArr)
+        localStorage.setItem("stuDetail",JSON.stringify(stuArr))
+    }
+
+</script>

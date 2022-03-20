@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+            background-color: rgb(22, 21, 21);
+            color: white;
+        }
+    #container{
+        width: 100%;
+        /* border: 1px solid red; */
+
+    }
+    #grandFather{
+        border: 1px solid black;
+        display: flex;
+        background-color: rgb(22, 21, 21);
+        width: 100%;
+        /* box-shadow: 0px 2px 4px 2px grey; */
+    }
+    
+    #searchBarDiv{
+        /* border: 1px solid red; */
+        width: 500px;
+        height: 40px;
+        
+    }
+    #searchDiv{
+        width: 560px;
+        height: 42px;
+        justify-content: center;
+        text-align: center;
+        /* border: 1px solid; */
+        display: flex;
+        gap: 7px;
+        background-color: rgb(22, 21, 21);
+        
+        
+
+    }
+    #searchBar{
+        width: 500px;
+        height: 35px;
+        background-color: black;
+        color: white;
+        
+    }
+    #searchButton{
+        width: 50px;
+        height: 40px;
+        
+    }
+    #logoDiv{
+        background-color: rgb(22, 21, 21);
+        height: 44px;
+        width: 120px;
+        margin-right: 10%;
+    }
+    #youtubeLogo{
+        height: 40px;
+        width: 120px;
+        background-color:rgb(22, 21, 21);
+    }
+    #micLogoDiv{
+        
+        /* border: 1px solid red; */
+        margin-left: 2%;
+    }
+    #micLogo{
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        margin-top: 35%;
+        
+    }
+    #restLogo{
+        margin-left: 10%;
+        /* border: 1px solid red; */
+        width: 240px;
+        display: flex;
+        justify-content: space-between;
+
+    }
+    #restLogo img{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-top: 20%;
+    }
+    #dataDiv{
+        background-color: rgb(22, 21, 21);
+        color: white;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 20px;
+        
+    }
+    #div1{
+        width: 300px;
+        height: 250px;
+        /* border: 1px solid red; */
+    }
+    #div1 img{
+        width: 100%;
+    }
+</style>
+<body>
+    <div id="container">
+        <nav id="grandFather">
+            <div id="logoDiv">
+                <a href="./index.html"><img id="youtubeLogo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfFiHxkk1x6AXAYxEeRkcd_uyXp2s7n-VH6xlbWCJFSuNQAz81pygxkEz2OJZM52Ss62I&usqp=CAU" alt="youtubeLogo"></a>
+            </div>
+        <div id="searchDiv">
+            <div id="searchBarDiv">
+            <input id="searchBar" type="text" placeholder="Search">
+            </div>
+        <!-- <button id="search" onclick="searchVideos()">Search</button> -->
+        <div id="searchButtonDiv">
+        <img id="searchButton" onclick="searchVideos()" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCt9mrOXlW2LB46mfeBNsC9RORF6lYEbuoSQ&usqp=CAU" alt="search button">
+        </div>
+        </div> 
+        <div id="micLogoDiv">
+            <img id="micLogo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZfUZT8VfaBNVtHLy7m2dbPVTE4loEDAOYib7pZFC_J5beuErGkBIncAckBGYFdz9sRHM&usqp=CAU" alt="">
+        </div> 
+        <div id="restLogo">
+            <div>
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQ8iV9D13Lbu-SqAKtF1EMuXS4fn6zQNmfuVzu7XzuhJaR4HTkT" alt="">
+            </div>
+            <div>
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSR_9ed920cnl98PK9PQt0AmZ6g92biuSKbie2RvRXRToviXvhh" alt="">
+        </div>
+        <div>
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ14FNejrAangN4DFk7EFhhmqR00Y1YOXrUnF4ATWK8v836T3Y1" alt="">
+        </div>
+        <div>
+        <img src="https://yt3.ggpht.com/yti/APfAmoG3I3vZUReqBiMYLSmhCW4sT6ytRiFf5c8XkI9_Vg=s88-c-k-c0x00ffffff-no-rj-mo" alt="">
+    </div>
+    </div>
+        </nav>
+        <h2>Your Results:</h2>
+        <div id="dataDiv"></div>
+    </div>
+    
+</body>
+</html>
+<script>
+
+
+
+
+
+let arrData = JSON.parse(localStorage.getItem("youtubeData")) || [];
+// console.log(arrData)
+
+display(arrData[0])
+function display(arrData){
+    // console.log(arrData)
+        document.querySelector("#dataDiv").innerHTML="";
+
+        arrData.map(function(element){
+
+        let div1 = document.createElement("div")
+        div1.setAttribute("id","div1")
+
+        // let iframe = document.createElement("iframe")
+        // iframe.src = `https://www.youtube.com/embed/${element.id.videoId}`
+
+        let thumbnail = document.createElement("img")
+        thumbnail.src = element.snippet.thumbnails.high.url
+        thumbnail.addEventListener("click",function(){
+            playVideo(element)
+        })
+        let title = document.createElement("p")
+        title.innerText= element.snippet.title
+
+        div1.append(thumbnail,title)
+        document.querySelector("#dataDiv").append(div1)
+        })
+        
+       
+}
+
+
+    let thumbnailArr = JSON.parse(localStorage.getItem("thumbnailData")) || []
+    let arr= []
+    function playVideo(element){
+    
+    arr.push(element)
+    localStorage.setItem("thumbnailData",JSON.stringify(arr))
+    location.href="display.html"
+    // console.log(arr)
+    // display(data)
+}
+// }
+</script>

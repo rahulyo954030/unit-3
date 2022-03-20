@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="./godown/navbar.css">
+<body>
+    <div id="header"></div>
+    <div id="yo2"></div>
+</body>
+</html>
+<script type="module" >
+    import navbar from "./godown/navbar.js"
+    document.querySelector("#header").innerHTML= navbar() 
+</script>
+
+<script type="module" ">
+let parent = document.querySelector("#yo2")
+    import {getdata,display} from "./godown/appendFetch.js"
+    let res = await getdata(`https://www.themealdb.com/api/json/v1/1/random.php`);
+    display(res,parent);
+</script>
+
+<script>
+    home=()=>{
+       window.location.href="./index.html"
+   }
+    random=()=>{
+        window.location.href="./random.html"
+    }
+    day=()=>{
+       window.location.href="./day.html"
+   }
+</script>
+

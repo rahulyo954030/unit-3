@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       body{
+           background-image: url(https://media.istockphoto.com/photos/typical-blue-sky-with-sun-and-clouds-background-picture-id1289078836?k=20&m=1289078836&s=612x612&w=0&h=4juNaZz6lcxy_AXY-fLCWun8ILFGtd934KLl9pPH3t0=);
+           background-repeat: no-repeat;
+           background-size: 100% 100%;
+           background-attachment: fixed;
+
+
+       }  
+          #city{
+            width:450px;
+            height: 50px;
+            background-color: rgb(243, 217, 152);
+            /* font-size: 20px; */
+            text-align: center;
+            border-radius: 6px;
+            margin-left: 29%;
+            border: 2px solid rgb(61, 2, 2);
+
+        }
+        #Wheather:hover{
+            background-color: rgb(233, 14, 14);
+            color:white;
+            font-size: 20px;
+        }
+        #searchicon{
+            height: 40px;
+            width: 170px;
+            border-radius: 4px;
+            margin-top: -2px;
+            box-shadow: -2px 2px 5px 2px rgb(19, 1, 1);
+            
+        }
+        #btn{
+            
+            width: 150px;
+            height: 50px;
+            margin-left: 40%;
+            border-radius: 4px;
+    
+            border: transparent;
+        }
+        #container{
+        
+            display: flex;
+            flex-flow: wrap;
+            height: 550px;
+            padding: 5px;
+            width: 90%;
+            margin: auto;
+            justify-content: space-evenly;
+        }
+        #divphla{
+            display: flex;
+            border: 1px solid black;
+            width: 350px;
+            height: 100px;
+            margin-left: 20px;
+            padding: 5px;
+            box-shadow: -2px 3px 10px 3px black;
+            border-radius: 6px;
+        
+            }
+        #divdusra{
+            display: flex;
+            border: 1px solid black;
+            width: 350px;
+            height: 100px;
+            margin-left: 20px;
+            padding: 5px;
+            box-shadow: -2px 3px 10px 3px black;
+            border-radius: 6px;
+
+        }
+        #divtisra{
+            display: flex;
+            border: 1px solid black;
+            width: 350px;
+            height: 100px;
+            margin-left: 20px;
+            padding: 5px;
+            box-shadow: -2px 3px 10px 5px black;
+            border-radius: 6px;
+        }
+        #templogo3{
+            width: 174px;
+        }
+        #templogo1{
+            width: 174px;
+        }
+        /* body{
+            background-image:url("https://th.bing.com/th/id/OIP.8nt2PgxDzS0CMPZK7l70ZgHaEK?w=286&h=180&c=7&r=0&o=5&pid=1.7");
+             background-repeat: no-repeat; 
+            background-attachment: fixed;
+            background-size:1400px;
+        } */
+        #maps{
+            margin-left: 10%;
+        }
+        h2,h3{
+            color: rgb(241, 19, 19);
+        }
+       
+    </style>
+</head>
+<body>
+    
+    <input type="search" id="city" placeholder="search your city's Wheather"><br>
+    <!-- <button onclick="goToProduct()"> Go to Product</button> -->
+    <button onclick="getWeather()" id="btn"><img id="searchicon"src="https://www.bing.com/th/id/OGC.ad2b486385b9410e61be33f1c7f49e17?pid=1.7&rurl=https%3a%2f%2fcdn.dribbble.com%2fusers%2f347174%2fscreenshots%2f2117497%2fdribbble.gif&ehk=wpNOjF%2bBFyeRESQzGrD3HhnRJIk1cGhRBs7%2b%2bhmykRw%3d" alt=""></button>
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+    let container = document.getElementById("container");
+
+    // <div class="mapouter"><div class="gmap_canvas">
+    //     <iframe width="599" height="494" id="gmap_canvas" 
+    //     src="https://maps.google.com/maps?q=mumbai&t=k&z=13&ie=UTF8&iwloc=&output=embed" 
+    //     frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+    //     <a href="https://www.embedgooglemap.org">embed google maps</a>
+    //     </div><style>.mapouter{position:relative;text-align:right;height:494px;width:599px;}.gmap_canvas 
+    //         {overflow:hidden;background:none!important;height:494px;width:599px;}</style></div>
+   
+   
+        async function getWeather(){
+
+        try{
+
+        let city=document.getElementById("city").value;
+
+        let res= await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8297d24e85fd5b198ec0f37d3e4155c3&units=metric`);
+          
+        let data=await res.json();
+        console.log(data);
+        getWeather(data);
+
+        }catch(error){
+          console.log("error: ",error);
+        }
+       
+
+     function  getWeather(data){
+       
+        container.innerHTML=null;
+            
+            var name=document.createElement("h2");
+            name.innerText="City: "+data.name;
+            
+            let div1=document.createElement("div");
+                div1.setAttribute("id","divphla");
+                let timg = document.createElement("img");
+                timg.setAttribute("id","templogo1")
+                timg.src = "https://www.bing.com/th/id/OGC.0623b0328fe2e77197b42b050349a38d?pid=1.7&rurl=https%3a%2f%2fmedia.giphy.com%2fmedia%2f13ZbqUkFX2rq1O%2fgiphy.gif&ehk=3lRDifvzpcmxE6ZV%2fgR3RuZ3glx0M0FtY%2bBxU9E5i64%3d"
+                let temp = document.createElement("h2");
+                temp.innerText = ""+"TEMPERATURE: "+data.main.temp+"`C";
+                // let humy=document.createElement("h3");
+                // humy.innerText="HUMIDITY: "+data.main.humidity;
+                div1.append(timg,temp);
+
+           let div2=document.createElement("div");
+                div2.setAttribute("id","divdusra");
+                let timg2 = document.createElement("img");
+                timg2.setAttribute("id","templogo2")
+                timg2.src = "https://www.bing.com/th/id/OGC.4ae8b5d73d968046ee66e320302f7d99?pid=1.7&rurl=https%3a%2f%2fi.pinimg.com%2foriginals%2f72%2f38%2f3e%2f72383e262827326b773e8452d7d636e5.gif&ehk=CjwuExexKMc4okNWvNJ70SbQHygkqGJraggbUpOlwo4%3d"
+                
+                let pressure = document.createElement("h2");
+                pressure.innerText = "MAX-temp: "+data.main.temp_max;
+                div2.append(timg2,pressure);
+
+            let div3=document.createElement("div");
+                div3.setAttribute("id","divtisra");
+                let timg3 = document.createElement("img");
+                timg3.setAttribute("id","templogo3")
+                timg3.src = "https://www.bing.com/th/id/OGC.bd72d10c741dde2ce2684577ffa0d86f?pid=1.7&rurl=https%3a%2f%2fmir-s3-cdn-cf.behance.net%2fproject_modules%2fdisp%2febc4db2235034.560a96356930d.gif&ehk=HqfLYmwCdkkKWPGX830UAcEQiqq%2b%2fTcesTAPGd9MLgQ%3d"
+
+                let humidity = document.createElement("h2");
+                humidity.innerText = "SPEED: "+data.wind.speed+"kmph";
+                div3.append(timg3,humidity)
+
+                let iframe = document.createElement("iframe");
+
+                    iframe.src = `https://maps.google.com/maps?q=${data.name}&t=k&z=13&ie=UTF8&iwloc=&output=embed`;
+
+                    //maps.google.com/maps?q=${data.name}&t=&z=13&ie=UTF8&iwloc=&output=embed
+                     iframe.setAttribute = ("id" , "maps")
+
+                    iframe.height = '380px';
+
+                    iframe.width = '1150px';
+
+                    // iframe.float = 'right'
+
+            container.append(div1,div2,div3,iframe);
+            
+
+
+     }
+        
+    }
+</script>

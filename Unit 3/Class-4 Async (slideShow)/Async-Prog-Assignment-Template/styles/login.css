@@ -1,0 +1,98 @@
+
+       #nav{
+        display: flex;
+        justify-content: right;
+        gap: 2%;
+        border: 1px solid;
+        padding-right: 2%;
+        background-color: rgb(66, 18, 18);
+        color: white;
+        box-shadow: 0px 2px 4px 2px grey;
+        margin-bottom: 3%;
+    }
+
+       
+       body{
+           /* display: flex; */
+           height: 100vh;
+           justify-content: center; 
+           align-items: center;
+           background: linear-gradient(315deg,white,rgba(12, 12, 12, 0.13));
+       }
+       #login-form-div{
+           padding-top: 5px;
+           padding: 10px;
+            width:380px;
+            height: 450px;
+            box-shadow: 0px 2px 4px rgb(46, 46, 58);
+            margin: auto;
+            background-color: white;
+            border-radius: 6px;
+            
+           
+       }
+       input{
+        height: 44px;
+      width: 340px;
+      background-color: white;
+      font-size: 17px;
+      color: black;
+      border: 1px solid black;
+      font-weight: bold;
+      margin-left: 18px;
+      margin-top: 10px;
+      border-radius: 3px;
+       }
+       input:hover{
+      background-color: rgba(53, 126, 126, 0.514);
+      font-size: 18px;
+  }
+       #submit{
+      width: 350px;
+      background-color: rgb(59, 62, 218);
+       color: white;
+      height: 40px;
+    }
+    #submit:hover{
+        color: rgb(253, 5, 100);
+        font-size: 20px;
+        background-color: rgb(29, 190, 190);
+    }
+    #login-form-divForm{
+        background-color: white;
+        width: auto;
+    }
+    .logh2{
+        text-align: center;
+        background-color: white;
+    }
+    button{
+        height: 44px;
+        width: 342px;
+        background-color: rgb(87, 36, 230);
+        margin-left: 19px;
+        border: 0px;
+        color: white;
+        font-size: 17px;
+        border-radius: 5px;
+        }
+        #btn2{
+            background-color: white;
+            color: rgb(61, 61, 233);
+            border: 1px solid blue;
+        }
+        #btn2:hover{
+         background-color: rgb(5, 5, 163);
+         color: white;
+        }
+        .or{
+            text-align: center;
+            background-color: white;
+        }
+        a{
+            color: white;
+            background-color:rgb(87, 36, 230);
+            text-decoration: none;
+        }
+
+   
