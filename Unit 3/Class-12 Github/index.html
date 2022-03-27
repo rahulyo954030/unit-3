@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    
+</head>
+<link rel="stylesheet" href="index.css">
+<body>
+    <div id="nav"></div>
+    <div id="showData"></div>
+</body>
+</html>
+<script type="module">
+
+import navbar from "./index.js"
+document.querySelector("#nav").innerHTML=navbar()
+
+let search = document.querySelector("#searchbar")
+search.addEventListener("keypress",function(){
+    getdata(event)
+})
+let profilePic = document.querySelector("#profileImg")
+async function getdata(event){
+try{
+    if(event.code==="Enter"){
+        let input = search.value 
+        
+        let res = await fetch(`https://api.github.com/users/${input}/repos`)
+        let data = await res.json()
+        profilePic.src=data[0].owner.avatar_url
+        console.log(data)
+        display(data)
+    }
+}
+catch(error){
+    console.log(error)
+}
+}
+function display(data){
+    document.querySelector("#showData").innerHTML=""
+
+    data.map(function(element){
+        let div = document.createElement("div")
+        div.setAttribute("id","div")
+
+        let name = document.createElement("h3")
+        name.innerHTML= "Repository Name:"+" "+element.name
+
+        let div2 = document.createElement("div")
+        div2.setAttribute("id","div2")
+        let visibility = document.createElement("p")
+        visibility.innerHTML= "visibility:"+" "+element.visibility
+        
+        let updated_at = document.createElement("p")
+        updated_at.innerHTML= "Updated at:"+" "+element.updated_at
+        div2.append(visibility,updated_at)
+
+        div.append(name,div2)
+        document.querySelector("#showData").append(div)
+    })
+}
+</script>
