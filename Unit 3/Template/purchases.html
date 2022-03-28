@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #purchases{
+      display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 2%;
+      }
+      #div2{
+        /* border: 1px solid; */
+        width: auto;
+        /* box-shadow: 0px 2px 4px 2px; */
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="purchases">
+      <!--SHOW ALL YOUR PURCHASES HERE-->
+    </div>
+  </body>
+</html>
+
+<script>
+  //WRITE YOUR LOGIC HERE
+  let parchase= JSON.parse(localStorage.getItem("parchase")) || []
+  console.log(parchase)
+  // display2(parchase)
+  //  function display2(parchase){
+
+  
+    parchase.map(function(element){
+    let div2 = document.createElement("div")
+    div2.setAttribute("id", "div2")
+      
+      let name = document.createElement("p")
+      name.innerHTML= element.name
+
+      let pic = document.createElement("img")
+      pic.setAttribute("src",element.image)
+
+      let price = document.createElement("p")
+      price.innerHTML=element.price
+
+      div2.append(name,pic,price)
+
+      document.querySelector("#purchases").append(div2)
+  })
+// }
+</script>

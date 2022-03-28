@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #main{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 2%;
+      }
+      #div1{
+        /* border: 1px solid; */
+        width: auto;
+        /* box-shadow: 0px 2px 4px 2px; */
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <h3 id="wallet">
+        <!--SHOW CURRENT WALLET VALUE HERE, ONLY THE NUMBER SHOULD BE VISIBLE-->
+      </h3>
+    </div>
+
+    <div id="main">
+      <!--SHOW ALL THE VOUCEHRS DATA FROM API HERE( IMAGE, NAME AND PRICE)-->
+    </div>
+  </body>
+</html>
+
+<script type="module">
+  //WRITE YOUR LOGIC HERE
+
+
+
+
+
+  let getData=async()=>{
+    try{
+    let res = await fetch(`https://masai-vouchers-api.herokuapp.com/api/vouchers`)
+    let data = await res.json()
+    display(data[0].vouchers)
+    console.log(data)
+    
+  }
+    catch(error){
+    console.log(error)
+    }
+  }
+getData()
+
+  function display(data){
+    document.querySelector("#main").innerHTML = ""
+
+    data.map(function(element){
+      let div1 = document.createElement("div")
+      div1.setAttribute("id", "div1")
+      
+      let name = document.createElement("p")
+      name.innerHTML= element.name
+
+      let pic = document.createElement("img")
+      pic.setAttribute("src",element.image)
+
+      let price = document.createElement("p")
+      price.innerHTML=element.price
+
+      let addTocart = document.createElement("button")
+      addTocart.innerHTML= "Buy"
+      addTocart.addEventListener("click",function(){
+        cart(element)
+      })
+
+
+      div1.append(pic,name,price,addTocart)
+
+      document.querySelector("#main").append(div1)
+    })
+  }
+
+  let wallet= JSON.parse(localStorage.getItem("wallet")) || []
+  
+  console.log(wallet)
+
+  let walletAmount = document.createElement("p")
+  walletAmount.innerHTML= "wallet Money:"+" "+wallet
+  
+  document.querySelector("#wallet").append(walletAmount)
+
+  let parchase= JSON.parse(localStorage.getItem("parchase")) || []
+  let arr = []
+  
+  function cart(element){
+    
+    
+
+    arr.push(element)
+    localStorage.setItem("parchase",JSON.stringify(arr))
+
+    total-element.price
+    localStorage.setItem("wallet",JSON.stringify(total))
+
+
+    
+  
+    
+    
+  }
+</script>
